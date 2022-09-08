@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+
+{% block title %}Les Etudiants{% endblock %}
+
+{% block main %}
+
+<br><br><br><br>
+<section class="container">
+    <div class="row">
+        <div class="col-xs-12">
+            <ul class="breadcrumb">
+                <li><a class="text-primary" href="{{ url_for('main.index') }}">Accueil</a></li>
+                <li class="active">Liste des étudiants</li>
+            </ul>
+        </div>
+    </div>
+</section>
+
+
+<section class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="student-table-container">
+                <table class="table table-bordered table-striped" id="studentsTable" style="background:white;">
+                    <thead>
+                    <tr class="success">
+                        <th class="">ID</th>
+                        <th class="">Nom</th>
+                        <th class="">Spécialité</th>
+                        <th class="">Moyenne générale</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for student in students %}
+                    <tr class="">
+                        <td class="col-md-1">{{ student["id_student"] }}</td>
+                        <!-- <td class="col-md-4"><strong><a href="/studentprofile/{{ student['id_student'] }}" class="text-primary">{{ student["name"] }} }}</a></strong></td>-->
+                        <td class="col-md-4">{{ student["name"] }}</td>
+                        <td class="col-md-1">{{ student["specialite"] }}</td>
+                        {% if student["specialite"] == 'IDL' %}
+                        <td class="col-md-1">{{ student["moyenne_generale_idl"] }}</td>
+                        {% endif %}
+                        {% if student["specialite"] == 'Reseau' %}
+                        <td class="col-md-1">{{ student["moyenne_generale_rs"] }}</td>
+                        {% endif %}
+                        {% if student["specialite"] == 'SE' %}
+                        <td class="col-md-1">{{ student["moyenne_generale_se"] }}</td>
+                        {% endif %}
+                    </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+{% endblock %}

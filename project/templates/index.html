@@ -1,0 +1,64 @@
+{% extends "base.html" %}
+
+{% block title %}Accueil{% endblock %}
+
+{% block main %}
+
+<br><br><br><br><br><br><br><br>
+<div id="intro">
+
+
+    <section class="container login-form-section">
+        <div class="row">
+            <div class="col-xs-3 col-sm-4 col-md-4"></div>
+            <div class="col-xs-6 col-sm-4 col-md-4">
+                <br>
+                <div class="col-md-2"></div>
+                <div class="col-md-12"><br><br>
+                    <img class="img-responsive login-logo" src="../static/images/school.png" alt="">
+                </div>
+                <div class="col-md-2"></div>
+            </div>
+            <div class="col-xs-3 col-sm-4 col-md-4"></div>
+        </div>
+        <div class="row">
+            <div class="col-md-4"></div>
+            <div class="col-md-4">
+                <br>
+                {% with messages = get_flashed_messages() %} {% if messages %}
+                <div class="alert alert-success" role="alert">
+                    {{ messages[0] }}
+                </div>
+                {% endif %} {% endwith %}
+                <h1 class="text-center">Vous êtes le bienvenu!</h1>
+                {% if not current_user.is_authenticated %}
+                <h3 class="text-center">Veuillez choisir votre profession s'il vous plaît </h3>
+                {% endif %}
+                {% if current_user.is_authenticated %}
+                <h3 class="text-center"> Accédez aux paramètres ci-dessus <label class="fa fa-external-link"/></h3>
+
+                {% endif %}
+
+                {% if not current_user.is_authenticated %}
+                <div class="text-center">
+
+                    <a
+                            href="{{ url_for('auth.login') }}"
+                            class="btn btn-primary"
+                            role="button"
+                            style="margin-left: 4px;"
+                    >Enseignant</a>
+
+                    <a
+                            href="{{ url_for('auth.student') }}"
+                            class="btn btn-primary"
+                            role="button"
+                            style="margin-left: 4px;"
+                    >Etudiant</a>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+{% endblock %}

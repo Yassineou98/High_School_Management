@@ -1,0 +1,188 @@
+{% extends "base.html" %}
+
+{% block title %}Notes Etudiant{% endblock %}
+
+{% block main %}
+<br><br><br><br>
+<section class="container">
+    <div class="row">
+        <div class="col-xs-12">
+            <ul class="breadcrumb">
+            <li><a class="text-primary" href="{{ url_for('main.index') }}">Accueil</a></li>
+            <li><a class="text-primary" href="{{ url_for('auth.student') }}">Etudiant</a></li>
+            <li class="active">Mes notes</li>
+            </ul>
+        </div>
+    </div>
+</section>
+
+<div class="row">
+    <div class="col-md-4"></div>
+    <div class="col-md-4">
+
+        <h1 class="text-center">Bulletin des notes</h1>
+        <br>
+        <div class="form-group">
+            <label class="control-label">ID de l'étudiant:</label> <strong>{{ id_student }} </strong>
+        </div>
+        <div class="form-group">
+            <label class="control-label">Nom de l'étudiant : </label> <strong> {{ name }} </strong>
+        </div>
+        <div class="form-group">
+            <label class="control-label">Spécialité : </label> <strong>{{ specialite }} </strong>
+        </div>
+
+
+        <style type="text/css">
+            .tg {
+                border-collapse: collapse;
+                border-color: #9ABAD9;
+                border-spacing: 0;
+            }
+
+            .tg td {
+                background-color: #EBF5FF;
+                border-color: #9ABAD9;
+                border-style: solid;
+                border-width: 1px;
+                color: #444;
+                font-family: Arial, sans-serif;
+                font-size: 14px;
+                overflow: hidden;
+                padding: 10px 20px;
+                word-break: normal;
+            }
+
+            .tg th {
+                background-color: #122b40;
+                border-color: #9ABAD9;
+                border-style: solid;
+                border-width: 1px;
+                color: #fff;
+                font-family: Arial, sans-serif;
+                font-size: 14px;
+                font-weight: normal;
+                overflow: hidden;
+                padding: 10px 20px;
+                word-break: normal;
+            }
+
+            .tg .tg-73oq {
+                border-color: #000000;
+                text-align: left;
+                vertical-align: top
+            }
+        </style>
+        <table class="tg">
+            <thead>
+            <tr>
+                <th class="tg-73oq">Module</th>
+                <th class="tg-73oq">Matière</th>
+                <th class="tg-73oq">Note Matière</th>
+                <th class="tg-73oq">Coefficient</th>
+                <th class="tg-73oq">Moyenne module</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td class="tg-73oq" rowspan="3">{{ unite[0] }}</td>
+                <td class="tg-73oq">{{ text[0] }}</td>
+                <td class="tg-73oq">{{ notes[0] }}</td>
+                <td class="tg-73oq">{{ coef[0] }}</td>
+                <td class="tg-73oq" rowspan="3">{{ ((notes[0]*coef[0]) + (notes[1]*coef[1])+(notes[2]*coef[2])) /
+                    (coef[0]+coef[1]+coef[2])}}
+                </td>
+            </tr>
+            <tr>
+                <td class="tg-73oq">{{ text[1] }}</td>
+                <td class="tg-73oq">{{ notes[1] }}</td>
+                <td class="tg-73oq">{{ coef[1] }}</td>
+            </tr>
+            <tr>
+                <td class="tg-73oq">{{ text[2] }}</td>
+                <td class="tg-73oq">{{ notes[2] }}</td>
+                <td class="tg-73oq">{{ coef[2] }}</td>
+            </tr>
+            <tr>
+                <td class="tg-73oq" rowspan="2">{{ unite[1] }}</td>
+                <td class="tg-73oq">{{ text[3] }}</td>
+                <td class="tg-73oq">{{ notes[3] }}</td>
+                <td class="tg-73oq">{{ coef[3] }}</td>
+                <td class="tg-73oq" rowspan="2">{{ ((notes[3]*coef[3]) + (notes[4]*coef[4])) / (coef[3]+coef[4]) }}</td>
+            </tr>
+            <tr>
+                <td class="tg-73oq">{{ text[4] }}</td>
+                <td class="tg-73oq">{{ notes[4] }}</td>
+                <td class="tg-73oq">{{ coef[4] }}</td>
+            </tr>
+            <tr>
+                <td class="tg-73oq" rowspan="3">{{ unite[2] }}</td>
+                <td class="tg-73oq">{{ text[5] }}</td>
+                <td class="tg-73oq">{{ notes[5] }}</td>
+                <td class="tg-73oq">{{ coef[5] }}</td>
+                <td class="tg-73oq" rowspan="3">{{ ((notes[5]*coef[5]) + (notes[6]*coef[6]) + (notes[7]*coef[7])) /
+                    (coef[5]+coef[6]+coef[7]) }}
+                </td>
+            </tr>
+            <tr>
+                <td class="tg-73oq">{{ text[6] }}</td>
+                <td class="tg-73oq">{{ notes[6] }}</td>
+                <td class="tg-73oq">{{ coef[6] }}</td>
+            </tr>
+            <tr>
+                <td class="tg-73oq">{{ text[7] }}</td>
+                <td class="tg-73oq">{{ notes[7] }}</td>
+                <td class="tg-73oq">{{ coef[7] }}</td>
+            </tr>
+            <tr>
+                <td class="tg-73oq" rowspan="3">{{ unite[3] }}</td>
+                <td class="tg-73oq">{{ text[8] }}</td>
+                <td class="tg-73oq">{{ notes[8] }}</td>
+                <td class="tg-73oq">{{ coef[8] }}</td>
+                <td class="tg-73oq" rowspan="3">{{ ((notes[8]*coef[8]) + (notes[9]*coef[9])+(notes[10]*coef[10])) /
+                    (coef[8]+coef[9]+coef[10])}}
+                </td>
+            </tr>
+            <tr>
+                <td class="tg-73oq">{{ text[9] }}</td>
+                <td class="tg-73oq">{{ notes[9] }}</td>
+                <td class="tg-73oq">{{ coef[9] }}</td>
+            </tr>
+            <tr>
+                <td class="tg-73oq">{{ text[10] }}</td>
+                <td class="tg-73oq">{{ notes[10] }}</td>
+                <td class="tg-73oq">{{ coef[10] }}</td>
+            </tr>
+            <tr>
+                <td class="tg-73oq" rowspan="3">{{ unite[4] }}</td>
+                <td class="tg-73oq">{{ text[11] }}</td>
+                <td class="tg-73oq">{{ notes[11] }}</td>
+                <td class="tg-73oq">{{ coef[11] }}</td>
+                <td class="tg-73oq" rowspan="3">{{ ((notes[11]*coef[11]) + (notes[12]*coef[12])+(notes[13]*coef[13])) /
+                    (coef[11]+coef[12]+coef[13])}}
+                </td>
+            </tr>
+            <tr>
+                <td class="tg-73oq">{{ text[12] }}</td>
+                <td class="tg-73oq">{{ notes[12] }}</td>
+                <td class="tg-73oq">{{ coef[12] }}</td>
+            </tr>
+            <tr>
+                <td class="tg-73oq">{{ text[13] }}</td>
+                <td class="tg-73oq">{{ notes[13] }}</td>
+                <td class="tg-73oq">{{ coef[13] }}</td>
+            </tr>
+            <tr>
+                <td class="tg-73oq" colspan="4">Moyenne générale</td>
+                <td class="tg-73oq">{{ ( (((notes[0]*coef[0]) + (notes[1]*coef[1])+(notes[2]*coef[2])) /
+                    (coef[0]+coef[1]+coef[2])) + (((notes[3]*coef[3]) + (notes[4]*coef[4])) / (coef[3]+coef[4])) +
+                    (((notes[5]*coef[5]) + (notes[6]*coef[6]) + (notes[7]*coef[7])) / (coef[5]+coef[6]+coef[7])) +
+                    (((notes[8]*coef[8]) + (notes[9]*coef[9])+(notes[10]*coef[10])) / (coef[8]+coef[9]+coef[10])) +
+                    (((notes[11]*coef[11]) + (notes[12]*coef[12])+(notes[13]*coef[13])) / (coef[11]+coef[12]+coef[13]))
+                    ) / 5 }}
+                </td>
+            </tr>
+            </tbody>
+        </table></div>
+</div>
+        {% endblock %}

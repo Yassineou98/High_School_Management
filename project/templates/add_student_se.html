@@ -1,0 +1,290 @@
+{% extends "base.html" %}
+
+{% block title %}Ajouter Etudiant SE{% endblock %}
+
+{% block main %}
+<br><br><br><br>
+<section class="container">
+    <div class="row">
+        <div class="col-xs-12">
+            <ul class="breadcrumb">
+            <li><a class="text-primary" href="{{ url_for('main.index') }}">Accueil</a></li>
+            <li><a class="text-primary" href="{{ url_for('main.new_student_post') }}">Ajouter un étudiant</a></li>
+            <li class="active">Ajouter un étudiant réseau</li>
+            </ul>
+        </div>
+    </div>
+</section>
+<div class="row">
+
+        <h1 class="text-center">Veuillez insérer les informations et les notes de l'étudiant</h1>
+    <div class="col-md-4"></div>
+
+    <div class="col-md-4">
+
+        <br>
+        {% with messages = get_flashed_messages() %} {% if messages %}
+        <div class="alert alert-dismissible alert-danger">
+            <button type="button" class="close" data-dismiss="alert">&times;</button>
+            <strong> {{ messages[0] }}</strong>
+        </div>
+        {% endif %} {% endwith %}
+        <form method="POST" action="/new/se">
+          <div class="form-group">
+                <label class="control-label" for="id_student">ID :</label>
+                <input class="form-control" type="number" id="id_student" name="id_student" placeholder="Entrez l'ID de l'étudiant" required >
+            </div>
+          <div class="form-group">
+                <label class="control-label" for="name">Nom :</label>
+                <input class="form-control" type="text" id="name" name="name" placeholder="Entrez le nom de l'étudiant" required>
+            </div>
+             <div class="form-group">
+                <label class="control-label" for="name">Spécilité :</label> <strong>Système Embarqué</strong>
+
+            </div>
+
+
+    <style type="text/css">
+    .tg  {border-collapse:collapse;border-color:#9ABAD9;border-spacing:0;}
+    .tg td{background-color:#EBF5FF;border-color:#9ABAD9;border-style:solid;border-width:1px;color:#444;
+      font-family:Arial, sans-serif;font-size:14px;overflow:hidden;padding:10px 20px;word-break:normal;}
+    .tg th{background-color:#122b40;border-color:#9ABAD9;border-style:solid;border-width:1px;color:#fff;
+      font-family:Arial, sans-serif;font-size:14px;font-weight:normal;overflow:hidden;padding:10px 20px;word-break:normal;}
+    .tg .tg-73oq{border-color:#000000;text-align:left;vertical-align:top}
+    </style>
+    <table class="tg">
+    <thead>
+      <tr>
+        <th class="tg-73oq">Module</th>
+        <th class="tg-73oq">Matière</th>
+        <th class="tg-73oq">Note Matière</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="tg-73oq" rowspan="3">Conception et implémentation des circuits numériques</td>
+        <td class="tg-73oq">Conception des circuits</td>
+        <td class="tg-73oq">
+          <input
+        type="number"
+        class="form-control"
+        id="note1"
+        name="note1"
+        aria-describedby="notemathHelp"
+        placeholder=""
+        required
+        min="0"
+        max="20"
+        step="0.01"
+      /></td>
+
+      </tr>
+      <tr>
+        <td class="tg-73oq">Mini-projet circuits numérique</td>
+        <td class="tg-73oq"><input
+        type="number"
+        class="form-control"
+        id="note2"
+        name="note2"
+        aria-describedby="noteinfoHelp"
+        placeholder=""
+        required
+        min="0"
+        max="20"
+        step="0.01"
+      /></td>
+      </tr>
+      <tr>
+        <td class="tg-73oq">Modélisation des systèmes</td>
+        <td class="tg-73oq"><input
+        type="number"
+        class="form-control"
+        id="note3"
+        name="note3"
+        aria-describedby="noteinfoHelp"
+        placeholder=""
+        required
+        min="0"
+        max="20"
+        step="0.01"
+      /></td>
+      </tr>
+      <tr>
+        <td class="tg-73oq" rowspan="2">Modélisation des systèmes</td>
+        <td class="tg-73oq">Commande numérique des systèmes</td>
+        <td class="tg-73oq"><input
+        type="number"
+        class="form-control"
+        id="note4"
+        name="note4"
+        aria-describedby="noteinfoHelp"
+        placeholder=""
+        required
+        min="0"
+        max="20"
+        step="0.01"
+      /></td>
+      </tr>
+      <tr>
+        <td class="tg-73oq">Mini-projet commande numérique</td>
+        <td class="tg-73oq"><input
+        type="number"
+        class="form-control"
+        id="note5"
+        name="note5"
+        aria-describedby="noteinfoHelp"
+        placeholder=""
+        required
+        min="0"
+        max="20"
+        step="0.01"
+      /></td>
+      </tr>
+      <tr>
+        <td class="tg-73oq" rowspan="3">Objects connecté</td>
+        <td class="tg-73oq">Protocoles de communication</td>
+        <td class="tg-73oq"><input
+        type="number"
+        class="form-control"
+        id="note6"
+        name="note6"
+        aria-describedby="noteinfoHelp"
+        placeholder=""
+        required
+        min="0"
+        max="20"
+        step="0.01"
+      /></td>
+      </tr>
+      <tr>
+        <td class="tg-73oq">Capteurs intélligents et reseaux</td>
+        <td class="tg-73oq"><input
+        type="number"
+        class="form-control"
+        id="note7"
+        name="note7"
+        aria-describedby="noteinfoHelp"
+        placeholder=""
+        required
+        min="0"
+        max="20"
+        step="0.01"
+      /></td>
+      </tr>
+      <tr>
+        <td class="tg-73oq">Domotique connectés</td>
+        <td class="tg-73oq"><input
+        type="number"
+        class="form-control"
+        id="note8"
+        name="note8"
+        aria-describedby="noteinfoHelp"
+        placeholder=""
+        required
+        min="0"
+        max="20"
+        step="0.01"
+      /></td>
+      </tr>
+      <tr>
+        <td class="tg-73oq" rowspan="3">Sureté des systèmes</td>
+        <td class="tg-73oq">Sureté de fonctionnement</td>
+        <td class="tg-73oq"><input
+        type="number"
+        class="form-control"
+        id="note9"
+        name="note9"
+        aria-describedby="noteinfoHelp"
+        placeholder=""
+        required
+        min="0"
+        max="20"
+        step="0.01"
+      /></td>
+      </tr>
+      <tr>
+        <td class="tg-73oq">Sécurité des SE</td>
+        <td class="tg-73oq"><input
+        type="number"
+        class="form-control"
+        id="note10"
+        name="note10"
+        aria-describedby="noteinfoHelp"
+        placeholder=""
+        required
+        min="0"
+        max="20"
+        step="0.01"
+      /></td>
+      </tr>
+      <tr>
+        <td class="tg-73oq">Modélisation stochastique</td>
+        <td class="tg-73oq"><input
+        type="number"
+        class="form-control"
+        id="note11"
+        name="note11"
+        aria-describedby="noteinfoHelp"
+        placeholder=""
+        required
+        min="0"
+        max="20"
+        step="0.01"
+      /></td>
+      </tr>
+      <tr>
+        <td class="tg-73oq" rowspan="3">Compétences comportementales</td>
+        <td class="tg-73oq">Internet marketing</td>
+        <td class="tg-73oq"><input
+        type="number"
+        class="form-control"
+        id="note12"
+        name="note12"
+        aria-describedby="noteinfoHelp"
+        placeholder=""
+        required
+        min="0"
+        max="20"
+        step="0.01"
+      /></td>
+      </tr>
+      <tr>
+        <td class="tg-73oq">Personal development</td>
+        <td class="tg-73oq"><input
+        type="number"
+        class="form-control"
+        id="note13"
+        name="note13"
+        aria-describedby="noteinfoHelp"
+        placeholder=""
+        required
+        min="0"
+        max="20"
+        step="0.01"
+      /></td>
+      </tr>
+      <tr>
+        <td class="tg-73oq">Projet personnel</td>
+        <td class="tg-73oq"><input
+        type="number"
+        class="form-control"
+        id="note14"
+        name="note14"
+        aria-describedby="noteinfoHelp"
+        placeholder=""
+        required
+        min="0"
+        max="20"
+        step="0.01"
+      /></td>
+      </tr>
+
+    </tbody>
+    </table>
+
+    <button type="submit" class="btn btn-primary">Ajouter l'étudiant</button>
+  </form>
+</div>
+</div>
+
+{% endblock %}

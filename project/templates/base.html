@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!--<meta http-equiv='cache-control' content='no-cache'>
+    <meta http-equiv='expires' content='-1'>
+    <meta http-equiv='pragma' content='no-cache'>-->
+    <title>{% block title %}{% endblock %}</title>
+    <link rel="stylesheet" type="text/css" href="../static/fonts/LatoLatin/latolatinfonts.css">
+    <link rel="stylesheet" type="text/css" href="../static/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="../static/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="../static/css/dataTables.bootstrap.css">
+    <link rel="icon" type="image/ico" href="../static/images/8161.png">
+    <script src="../static/js/jquery-3.2.1.min.js"></script>
+    <script src="../static/js/bootstrap.min.js"></script>
+    <script src="../static/js/jquery.dataTables.min.js"></script>
+    <script src="../static/js/dataTables.bootstrap.min.js"></script>
+    {% block script %}{% endblock %}
+</head>
+
+<nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                    data-target="#bs-example-navbar-collapse-2">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <div class="nav-logo-container">
+                <a href="/" class="nav-logo-link">
+                </a>
+            </div>
+            <a class="navbar-brand nav-brand-name" href="/">
+                 UP-UNIVERSITE
+            </a>
+        </div>
+
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-2">
+            <ul class="nav navbar-nav navbar-right">
+
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                        <i class="fa fa-bars" aria-hidden="true"></i>&nbsp;
+                        <span>Sections</span> <span class="caret"></span></a>
+                    <ul class="dropdown-menu" role="menu">
+                        <li><a href="/"><i class="fa fa-indent nav-icon" aria-hidden="true"></i>
+                            Accueil</a></li>
+                        {% if current_user.is_authenticated %}
+                        <li class="divider"></li>
+                        <li><a href="{{ url_for('main.new_student') }}"><i class="fa fa-plus-circle nav-icon" aria-hidden="true"></i>
+                            Ajouter un étudiant</a></li>
+                        <li class="divider"><li>
+                        <li><a href="{{ url_for('main.profile') }}"><i class="fa fa-edit nav-icon" aria-hidden="true"></i>
+                            Modifier un étudiant</a></li>
+                        <li class="divider"><li>
+                        <li><a href="{{ url_for('main.students') }}"><i class="fa fa-edit nav-icon" aria-hidden="true"></i>
+                            Tous les étudiants</a></li>
+                            {% endif %}
+                    </ul>
+
+
+                </li>
+                {% if current_user.is_authenticated %}
+
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+
+                        <i class="fa fa-user-circle" aria-hidden="true"></i>&nbsp;
+                        <span> {{ name }}</span> <span class="caret"></span></a>
+                    <ul class="dropdown-menu" role="menu">
+                        <li>
+
+                            <a href="{{ url_for('main.enseig_profile') }}"><i class="fa fa-id-card-o nav-icon"
+                                                                       aria-hidden="true"></i> Mon
+                                profil</a>
+                        </li>
+
+                        <li class="divider"></li>
+
+                        <li>
+                            <a href="{{ url_for('auth.logout') }}"><i class="fa fa-sign-out nav-icon"
+                                                                      aria-hidden="true"></i> Se déconnecter</a>
+                        </li>
+                    </ul>
+                </li>
+                {% endif %}
+            </ul>
+        </div>
+    </div>
+    </div>
+</nav>
+
+{% block main %}{% endblock %}
+
+</body>
+</html>
+
+<!--
+<body>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="{{ url_for('main.index') }}"
+    >Acadamey</a
+    >
+    <button
+            class="navbar-toggler"
+            type="button"
+            data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+    >
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+                {% if current_user.is_authenticated %}
+                <a
+                        href="{{ url_for('main.profile') }}"
+                        class="btn btn-outline-secondary"
+                        role="button"
+                        style="margin-left: 4px;"
+                >Account</a
+                >
+                {% endif %}
+            </li>
+        </ul>
+        <form class="form-inline my-2 my-lg-0">
+               {% if not current_user.is_authenticated %}
+               <a
+                 href="{{ url_for('auth.signup') }}"
+                 class="btn btn-outline-primary"
+                 role="button"
+                 >Signup</a
+               >
+               <a
+                 href="{{ url_for('auth.login') }}"
+                 class="btn btn-outline-primary"
+                 role="button"
+                 style="margin-left: 4px;"
+                 >Login</a>
+                {% endif %}
+            {% if current_user.is_authenticated %}
+            <a
+                    href="{{ url_for('auth.logout') }}"
+                    class="btn btn-outline-danger"
+                    role="button"
+                    style="margin-left: 4px;"
+            >Log Out</a
+            >
+            {% endif %}
+        </form>
+    </div>
+</nav>
+{% block content %} {% endblock %}
+</body>
+</html>-->
